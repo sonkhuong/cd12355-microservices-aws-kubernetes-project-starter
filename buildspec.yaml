@@ -1,0 +1,19 @@
+env:
+  variables:
+    IMG_REPO: myproject
+
+phases:
+  pre-build:
+    commands:
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+  build:
+    commands:
+      - echo Building the Docker image...
+      - docker build -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMG_REPO:$CODEBUILD_BUILD_NUMBER ./analytics/.
+      - echo list docker images
+      - docker images
+  post-build:
+    commands:
+      - echo Completed build at `date`
+      - echo Pushing the Docker image...
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMG_REPO:$CODEBUILD_BUILD_NUMBER
