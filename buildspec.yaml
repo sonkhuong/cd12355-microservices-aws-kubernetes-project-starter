@@ -1,7 +1,7 @@
 version: 0.2
 env:
   variables:
-    IMG_REPO: post_build
+    IMG_REPO: udacity-project
 
 phases:
   pre_build:
