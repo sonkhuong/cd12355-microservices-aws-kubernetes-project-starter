@@ -1,7 +1,7 @@
 version: 0.2
 env:
   variables:
-    IMG_REPO: myproject
+    IMG_REPO: post_build
 
 phases:
   pre_build:
