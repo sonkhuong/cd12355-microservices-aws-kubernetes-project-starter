@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: env-config
 data:
-  DB_USERNAME: "myuser"
-  DB_NAME: "mydatabase"
+  DB_USERNAME: "postgres"
+  DB_NAME: "postgres"
   DB_HOST: "udacity-project-postgresql"
   DB_PORT: "5432"
