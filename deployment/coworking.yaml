@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: coworking
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     service: coworking
   ports:
@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
       - name: coworking
-        image: 059933735571.dkr.ecr.us-east-1.amazonaws.com/udacity-project:7
+        image: 059933735571.dkr.ecr.us-east-1.amazonaws.com/udacity-project:latest
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
